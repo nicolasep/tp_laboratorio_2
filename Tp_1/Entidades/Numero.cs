@@ -58,23 +58,24 @@ namespace Entidades
             int numeroEntero;
             int aux;
             numeroEntero = (int)numero;
-
+           
             if (numeroEntero > 0)
             {
-                
-                    while (numeroEntero > 1)
-                    {
-                        aux = numeroEntero % 2;
 
-                        resultado = Convert.ToString(aux) + resultado;
-                        numeroEntero = numeroEntero / 2;
-                    }
-                    resultado = Convert.ToString(numeroEntero) + resultado;
+                while (numeroEntero > 1)
+                {
+                    aux = numeroEntero % 2;
+
+                    resultado = Convert.ToString(aux) + resultado;
+                    numeroEntero = numeroEntero / 2;
+                }
+                resultado = Convert.ToString(numeroEntero) + resultado;
             }
             else
             {
                 resultado = "Valor Invalido";
             }
+           
             return resultado;
         }
         /// <summary>
@@ -216,5 +217,6 @@ namespace Entidades
             }
             return retorno;
         }
+        
     }
 }
