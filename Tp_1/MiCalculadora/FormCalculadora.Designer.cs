@@ -84,7 +84,6 @@
             // 
             resources.ApplyResources(this.textNumero2, "textNumero2");
             this.textNumero2.Name = "textNumero2";
-            this.textNumero2.TextChanged += new System.EventHandler(this.textNumero2_TextChanged);
             // 
             // lblResultado
             // 
@@ -125,7 +124,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormCalculadora";
-            this.Load += new System.EventHandler(this.FormCalculadora_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

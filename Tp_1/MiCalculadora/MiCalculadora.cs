@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace MiCalculadora
 {
-    static class Program
+    static class MiCalculadora
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.

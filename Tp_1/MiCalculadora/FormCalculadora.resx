@@ -313,10 +313,10 @@
     <value>24, 9</value>
   </data>
   <data name="lblResultado.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>100, 200</value>
+    <value>650, 71</value>
   </data>
   <data name="lblResultado.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>650, 40</value>
+    <value>650, 71</value>
   </data>
   <data name="lblResultado.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
