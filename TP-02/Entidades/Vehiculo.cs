@@ -11,6 +11,10 @@ namespace Entidades
     /// </summary>
     public abstract class Vehiculo
     {
+        private string chasis;
+        private ConsoleColor color;
+        private EMarca marca;
+
         public enum EMarca
         {
             Chevrolet, Ford, Renault, Toyota, BMW, Honda, HarleyDavidson
@@ -19,10 +23,23 @@ namespace Entidades
         {
             Chico, Mediano, Grande
         }
-        private EMarca marca;
-        private string chasis;
-        private ConsoleColor color;
 
+        #region "constructores"
+        /// <summary>
+        /// Constructor de un objeto vehiculo
+        /// </summary>
+        /// <param name="chasis">chasis del vehiculo</param>
+        /// <param name="marca">marca del vehiculo</param>
+        /// <param name="color">color del vehiculo</param>
+        public Vehiculo(string chasis, EMarca marca, ConsoleColor color)
+        {
+            this.chasis = chasis;
+            this.marca = marca;
+            this.color = color;
+        }
+        #endregion
+
+        #region "Propiedades"
         /// <summary>
         /// ReadOnly: Retornará el tamaño
         /// </summary>
@@ -30,14 +47,15 @@ namespace Entidades
         {
             get;
         }
+        #endregion
 
+        #region "Metodos"
         /// <summary>
         /// Publica todos los datos del Vehiculo.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>devuelve una cadena de caracteres con los datos del vehiculo</returns>
         public virtual string Mostrar()
        {
-            
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"CHASIS: {this.chasis}");
@@ -47,27 +65,23 @@ namespace Entidades
 
             return sb.ToString();
         }
-        
+        #endregion
 
-        public Vehiculo(string chasis, EMarca marca, ConsoleColor color)
-        {
-            this.chasis = chasis;
-            this.marca = marca;
-            this.color = color;
-        }
-
+        #region "Opereadores"
+        /// <summary>
+        /// convierte un vehiculo con sus datos a string
+        /// </summary>
+        /// <param name="p">devuelve una cadena con los datos del vehiculo</param>
         public static explicit operator string(Vehiculo p)
         {
-            
             return p.Mostrar();
         }
-
         /// <summary>
         /// Dos vehiculos son iguales si comparten el mismo chasis
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
-        /// <returns></returns>
+        /// <param name="v1">Vehiculo 1</param>
+        /// <param name="v2">Vehiculo 2</param>
+        /// <returns>devuelve true si su numero de chases es igual, false si no lo son</returns>
         public static bool operator ==(Vehiculo v1, Vehiculo v2)
         {
             return (v1.chasis == v2.chasis);
@@ -75,12 +89,13 @@ namespace Entidades
         /// <summary>
         /// Dos vehiculos son distintos si su chasis es distinto
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
-        /// <returns></returns>
+        /// <param name="v1">Vehiculo 1</param>
+        /// <param name="v2">Vehiculo 2</param>
+        /// <returns>devuelve true si su numero de chasis son distintos, false si son iguales</returns>
         public static bool operator !=(Vehiculo v1, Vehiculo v2)
         {
             return (v1.chasis == v2.chasis);
         }
+        #endregion
     }
 }

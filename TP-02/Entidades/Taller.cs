@@ -33,7 +33,7 @@ namespace Entidades
         /// <summary>
         /// Muestro el estacionamiento y TODOS los vehículos
         /// </summary>
-        /// <returns></returns>
+        /// <returns>devuelve un string con todos los datos</returns>
         public override string ToString()
         {
             return Listar(this, ETipo.Todos);
