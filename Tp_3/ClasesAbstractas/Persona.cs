@@ -16,10 +16,11 @@ namespace EntidadesAbstractas
         {
             Argentino, Extranjero
         }
-        private string apellido;
         private int dni;
-        private ENacionalidad nacionalidad;
+        private string apellido;
         private string nombre;
+        private ENacionalidad nacionalidad;
+        
 
         /// <summary>
         /// Constructor de instancia sin parametros
@@ -63,17 +64,17 @@ namespace EntidadesAbstractas
             this.StringToDNI = dni;
         }
         /// <summary>
-        /// Propiedad para obtener el apellido de la persona y cargar un apellido valido
+        /// Propiedad para obtener y cargar la nacionalidad de la persona
         /// </summary>
-        public string Apellido
+        public ENacionalidad Nacionalidad
         {
             get
             {
-                return this.apellido;
+                return this.nacionalidad;
             }
             set
             {
-                this.apellido = this.ValidarNombreApellido(value);
+                this.nacionalidad = value;
             }
         }
         /// <summary>
@@ -91,17 +92,27 @@ namespace EntidadesAbstractas
             }
         }
         /// <summary>
-        /// Propiedad para obtener y cargar la nacionalidad de la persona
+        /// Propiedad para cargar un dni tipo string, validarlo y convertirlo a int
         /// </summary>
-        public ENacionalidad Nacionalidad
+        public string StringToDNI
+        {
+            set
+            {
+                this.dni = this.ValidarDni(this.Nacionalidad, value);
+            }
+        }
+        /// <summary>
+        /// Propiedad para obtener el apellido de la persona y cargar un apellido valido
+        /// </summary>
+        public string Apellido
         {
             get
             {
-                return this.nacionalidad;
+                return this.apellido;
             }
             set
             {
-                this.nacionalidad = value;
+                this.apellido = this.ValidarNombreApellido(value);
             }
         }
         /// <summary>
@@ -118,16 +129,7 @@ namespace EntidadesAbstractas
                 this.nombre = this.ValidarNombreApellido(value);
             }
         }
-        /// <summary>
-        /// Propiedad para cargar un dni tipo string, validarlo y convertirlo a int
-        /// </summary>
-        public string StringToDNI
-        {
-            set
-            {
-                this.dni = this.ValidarDni(this.Nacionalidad, value);
-            }
-        }
+        
         /// <summary>
         /// Valida que el dni sea valido segun su numero y nacionalidad
         /// </summary>
@@ -136,16 +138,34 @@ namespace EntidadesAbstractas
         /// <returns>devuelve el dni validad si esta bien y si esta mal devuelve una excepcion</returns>
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {
-            
-            if ((nacionalidad == ENacionalidad.Argentino && (dato < 90000000 && dato > 0)) ||
-                (nacionalidad == ENacionalidad.Extranjero && (dato >= 90000000 && dato <= 99999999)))
+            if (dato < 90000000 && dato > 0)
             {
-
-                return dato;
+                
+                if (nacionalidad == ENacionalidad.Argentino)
+                {
+                    return dato;
+                }
+                else
+                {
+                    throw new NacionalidadInvalidaException();
+                }
             }
+            else if (dato >= 90000000 && dato <= 99999999)
+            {
+                
+                if (nacionalidad == ENacionalidad.Extranjero)
+                {
+                    return dato;
 
-            throw new NacionalidadInvalidaException();
+                }
+                else
+                {
+                    throw new NacionalidadInvalidaException();
+                }
+            }
             
+            throw new DniInvalidoException();
+
         }
         /// <summary>
         /// Valida si el dni pasado por strin son solo numero y si corresponde a la nacionalidad

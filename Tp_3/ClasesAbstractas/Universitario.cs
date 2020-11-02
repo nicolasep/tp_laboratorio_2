@@ -29,7 +29,18 @@ namespace EntidadesAbstractas
         public Universitario(int legajo, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
             :base(nombre,apellido,dni,nacionalidad)
         {
-            this.legajo = legajo;
+            this.Legajo = legajo;
+        }
+        public int Legajo
+        {
+            get
+            {
+                return this.legajo;
+            }
+            set
+            {
+                this.legajo = value;
+            }
         }
         /// <summary>
         /// Imprime los datos del universitario
@@ -39,7 +50,7 @@ namespace EntidadesAbstractas
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{base.ToString()}");
-            sb.AppendLine($"LEGAJO NUMERO: {this.legajo}");
+            sb.AppendLine($"LEGAJO NUMERO: {this.Legajo}");
             return sb.ToString();
         }
         /// <summary>
@@ -65,7 +76,7 @@ namespace EntidadesAbstractas
         /// <returns>Devuelve true si son iguales, false si no lo son</returns>
         public static bool operator ==(Universitario pg1, Universitario pg2)
         {
-            return pg1.Equals(pg2) && (pg1.legajo == pg2.legajo || pg1.DNI == pg2.DNI);
+            return pg1.Equals(pg2) && (pg1.Legajo == pg2.Legajo || pg1.DNI == pg2.DNI);
         }
         /// <summary>
         /// Un universitario es distinto a otro si no son del mismo tipo o no coincide su dni o legajo

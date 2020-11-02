@@ -125,6 +125,7 @@ namespace Perez.NicolasEduardo._2C.Tp3
                 Console.WriteLine(e.Message);
             }
             Console.ReadKey();
+
         }
     }
 }
