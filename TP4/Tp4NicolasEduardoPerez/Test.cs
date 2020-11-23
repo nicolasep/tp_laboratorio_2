@@ -23,56 +23,72 @@ namespace Tp4NicolasEduardoPerez
             try
             {
 
-
-
                 productos += p1;
                 productos += p2;
                 productos += p3;
                 productos += p4;
                 productos += p5;
                 productos += p6;
+                Cliente cliente = new Cliente("32556448", "chespirito", "barbosa");
+                Alquilar clienteAlquiler = new Alquilar(cliente);
+                clienteAlquiler.AgregarProducto(p1, 1);
+                clienteAlquiler.AgregarProducto(p2, 1);
+                clienteAlquiler.AgregarProducto(p3, 50);
+                clienteAlquiler.ConcretarOperacion();
+                Console.WriteLine("------------factura------------");
+                Console.WriteLine(clienteAlquiler.Mostrar());
+                Console.WriteLine("---------------------------------");
+
             }
             catch(ProductoDuplicadoExcepcion ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            
+            catch (CantidadNoDisponibleExcepcion ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
 
             //Productos productos = new Productos();//cuando se crea productos recupera la lista de productos de la BD
+
+
+            try
+            {
+                Cliente cliente2 = new Cliente("32557448", "Juan", "Perez");
+                Compra compra = new Compra(cliente2);
+                compra.AgregarProducto(p3, 1);
+                compra.AgregarProducto(p4, 1);
+                compra.AgregarProducto(p5, 1);
+                compra.ConcretarOperacion();
+                Console.WriteLine("-----------factura------------");
+                Console.WriteLine(compra.Mostrar());
+                Console.WriteLine("---------------------------------");
+
+                Console.WriteLine("-------------LISTA DE PRODUCTOS--------------------");
+                Console.WriteLine(productos.Mostrar());
+            }
+            catch (ProductoDuplicadoExcepcion ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (CantidadNoDisponibleExcepcion ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+            /*
             
-            Cliente cliente = new Cliente("32556448", "chespirito", "barbosa");
-            Alquilar clienteAlquiler = new Alquilar(cliente);
-
-
-            clienteAlquiler.AgregarProducto(p1, 1);
-            clienteAlquiler.AgregarProducto(p2, 1);
-            clienteAlquiler.AgregarProducto(p3, 1);
-
-
-            //clienteAlquiler.ConcretarOperacion();
-            Console.WriteLine(clienteAlquiler.Mostrar());
-            Console.WriteLine("---------------------------------");
-
-            Cliente cliente2 = new Cliente("32557448", "Juan", "Perez");
-            Compra compra = new Compra(cliente2);
-            compra.AgregarProducto(p3, 1);
-            compra.AgregarProducto(p4, 1);
-            compra.AgregarProducto(p5, 1);
-            //compra.ConcretarOperacion();
-            Console.WriteLine(compra.Mostrar());
-            Console.WriteLine("---------------------------------");
-            
-            Console.WriteLine("-------------LISTA DE PRODUCTOS--------------------");
-            Console.WriteLine(productos.Mostrar());
             
             Console.WriteLine("---------MOVIMIENTOS----------------");
             List<string> movimientos = clienteAlquiler.Movimientos();
             foreach(string mov in movimientos)
             {
                 Console.WriteLine(mov);
-            }
-           
+            }*/
+
 
 
             Console.ReadKey();

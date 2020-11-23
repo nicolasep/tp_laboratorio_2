@@ -73,7 +73,15 @@ namespace Entidades
         /// <param name="cantidad">cantidad a descontar</param>
         public void SalidaStock(Producto producto,int cantidad)
         {
-            ProductosDAO.DescontarDeStock(producto, cantidad);
+            try
+            {
+                ProductosDAO.DescontarDeStock(producto, cantidad);
+
+            }
+            catch(CantidadNoDisponibleExcepcion ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             
         }
         /// <summary>

@@ -150,22 +150,18 @@ namespace Entidades
         /// </summary>
         public void ConcretarOperacion()
         {
-            try
-            {
-                float acumulador = 0.0f;
-                for (int i = 0; i < this.ListaDeProductos.Count; i++)
-                {
-                    acumulador += (this.ListaDeProductos[i].Precio * this.ListaCantidades[i]);
-                    this.productosDisponibles.SalidaStock(this.ListaDeProductos[i], this.ListaCantidades[i]);
-                    MovimientosDAO.Insertar("Alquiler", this.ACliente, this.ListaDeProductos[i], this.ListaCantidades[i], acumulador);
-                    OperacionTerminada.Invoke();
 
-                }
-            }
-            catch(CantidadNoDisponibleExcepcion ex)
+            float acumulador = 0.0f;
+            for (int i = 0; i < this.ListaDeProductos.Count; i++)
             {
-                throw new CantidadNoDisponibleExcepcion(ex.Message);
+                
+                this.productosDisponibles.SalidaStock(this.ListaDeProductos[i], this.ListaCantidades[i]);
+                acumulador += (this.ListaDeProductos[i].Precio * this.ListaCantidades[i]);
+                MovimientosDAO.Insertar("Alquiler", this.ACliente, this.ListaDeProductos[i], this.ListaCantidades[i], acumulador);
+                OperacionTerminada.Invoke();
+
             }
+            
             
         }
         /// <summary>

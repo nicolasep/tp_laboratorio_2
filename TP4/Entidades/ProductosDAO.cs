@@ -134,6 +134,7 @@ namespace Entidades
         /// <param name="cantidad">cantidad a descontar</param>
         public static void DescontarDeStock(Producto producto,int cantidad)
         {
+
             try
             {
                 if(producto.Stock > cantidad)
@@ -150,13 +151,19 @@ namespace Entidades
                     AbrirConexion();
                     sqlCommand.ExecuteNonQuery();
                 }
+                
                 else
                 {
                     throw new CantidadNoDisponibleExcepcion();
                 }
                
             }
-            
+            catch(CantidadNoDisponibleExcepcion ex)
+            {
+                throw new CantidadNoDisponibleExcepcion();
+            }
+
+
             finally
             {
                 CerrarConexion();
