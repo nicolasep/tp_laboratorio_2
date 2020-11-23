@@ -12,7 +12,7 @@ namespace Tp4NicolasEduardoPerez
         static void Main(string[] args)
         {
 
-
+            
             Producto p1 = new Producto("AS01", "AGUAS", 20001, 50);
             Producto p2 = new Producto("AS02", "USHUAIA", 22300, 50);
             Producto p3 = new Producto("AS03", "BACOPE", 16700, 50);
@@ -22,9 +22,9 @@ namespace Tp4NicolasEduardoPerez
             Productos productos = new Productos();
             try
             {
-                
 
-                
+
+
                 productos += p1;
                 productos += p2;
                 productos += p3;
@@ -43,23 +43,23 @@ namespace Tp4NicolasEduardoPerez
             
             Cliente cliente = new Cliente("32556448", "chespirito", "barbosa");
             Alquilar clienteAlquiler = new Alquilar(cliente);
-            
-           
-            clienteAlquiler.AgregarProducto(p1, 10);
-            clienteAlquiler.AgregarProducto(p2, 5);
-            clienteAlquiler.AgregarProducto(p3, 3);
-            
-           
-            clienteAlquiler.ConcretarOperacion();
+
+
+            clienteAlquiler.AgregarProducto(p1, 1);
+            clienteAlquiler.AgregarProducto(p2, 1);
+            clienteAlquiler.AgregarProducto(p3, 1);
+
+
+            //clienteAlquiler.ConcretarOperacion();
             Console.WriteLine(clienteAlquiler.Mostrar());
             Console.WriteLine("---------------------------------");
 
             Cliente cliente2 = new Cliente("32557448", "Juan", "Perez");
             Compra compra = new Compra(cliente2);
-            compra.AgregarProducto(p3, 10);
-            compra.AgregarProducto(p4, 10);
-            compra.AgregarProducto(p5, 10);
-            compra.ConcretarOperacion();
+            compra.AgregarProducto(p3, 1);
+            compra.AgregarProducto(p4, 1);
+            compra.AgregarProducto(p5, 1);
+            //compra.ConcretarOperacion();
             Console.WriteLine(compra.Mostrar());
             Console.WriteLine("---------------------------------");
             
