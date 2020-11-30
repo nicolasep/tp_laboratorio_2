@@ -82,14 +82,12 @@ namespace Entidades
                         {
                             sb.AppendLine(v.Mostrar());
                         }
-                        
                         break;
                     case ETipo.Sedan:
                         if(v is Sedan)
                         {
                             sb.AppendLine(v.Mostrar());
                         }
-                        
                         break;
                     default:
                         sb.AppendLine(v.Mostrar());
